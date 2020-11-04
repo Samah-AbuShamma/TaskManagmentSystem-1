@@ -12,8 +12,12 @@ namespace TaskManagmentSystem.Automapper
     {
         public AutoMapperProfile() {
             
-                CreateMap<Tasks, TaskView>().ReverseMap();
+            CreateMap<Tasks, TaskView>().ReverseMap();
             
+            CreateMap<Categories, CategoryView>().ReverseMap();
+
+            CreateMap<TasksCategories, TaskCategoriesView>().ReverseMap();
+
         }
     }
 }

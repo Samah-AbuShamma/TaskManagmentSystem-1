@@ -32,15 +32,18 @@ namespace TaskManagmentSystem.Models
         {
             modelBuilder.Entity<Categories>(entity =>
             {
-                entity.HasNoKey();
+                entity.HasKey(e => e.CategoryId)
+                    .HasName("PK__Categori__19093A0B549E53A2");
+
+                entity.Property(e => e.CategoryId).ValueGeneratedNever();
 
                 entity.Property(e => e.CategoryName)
                     .HasMaxLength(50)
                     .IsUnicode(false);
 
                 entity.HasOne(d => d.Category)
-                    .WithMany()
-                    .HasForeignKey(d => d.CategoryId)
+                    .WithOne(p => p.Categories)
+                    .HasForeignKey<Categories>(d => d.CategoryId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK__Categorie__Categ__3B75D760");
             });

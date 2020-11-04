@@ -27,6 +27,8 @@ namespace TaskManagmentSystem
             services.AddControllersWithViews();
 
             services.AddScoped<ITaskRepository, TaskRepository>();
+            services.AddScoped<ICategoriesRepository, CategoriesRepository>();
+            services.AddScoped<ITaskCategoriesRepository, TasksCategoriesRepository>();
 
 
             var config = new AutoMapper.MapperConfiguration(c =>
